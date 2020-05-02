@@ -1,0 +1,117 @@
+<% let allStudents = []; for(interview of interviews){ for(applicant of
+interview.applications){ let id = applicant.student._id; id = id.toString();
+if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
+<table id="csv">
+  <thead>
+    <tr>
+      <th>
+        Student Id
+      </th>
+      <th>
+        Student Name
+      </th>
+      <th>
+        Student College
+      </th>
+      <th>
+        Student Status
+      </th>
+      <th>
+        DSA Final Score
+      </th>
+      <th>
+        WebD Final Score
+      </th>
+      <th>
+        React Final Score
+      </th>
+      <th>
+        Interview Date
+      </th>
+      <th>
+        Interview Company
+      </th>
+      <th>
+        Interview Result
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(interview of interviews){ %> <% for(applicant of
+    interview.applications){ %>
+    <tr>
+      <td>
+        <%= applicant.student._id %>
+      </td>
+      <td>
+        <%= applicant.student.name %>
+      </td>
+      <td>
+        <%= applicant.student.college %>
+      </td>
+      <td>
+        <%= applicant.student.status %>
+      </td>
+      <td>
+        <%= applicant.student.score.ads %>
+      </td>
+      <td>
+        <%= applicant.student.score.webd %>
+      </td>
+      <td>
+        <%= applicant.student.score.react %>
+      </td>
+      <td>
+        <% let date = interview.date; let monthNames = ['January', 'February',
+        'March', 'April', 'May', 'June', 'July', 'August', 'September',
+        'October', 'November', 'December']; let d = date.getDate(); let m =
+        monthNames[date.getMonth()]; let y = date.getFullYear(); let
+        formattedDate = d + " " + m + " " + y; %> <%= formattedDate %>
+      </td>
+      <td>
+        <%= interview.company %>
+      </td>
+      <td>
+        <%= applicant.result %>
+      </td>
+    </tr>
+    <% } }%> <% for(student of students){ let id = student._id; id =
+    id.toString(); if(!allStudents.includes(id)){ %>
+    <tr>
+      <td>
+        <%= student._id %>
+      </td>
+      <td>
+        <%= student.name %>
+      </td>
+      <td>
+        <%= student.college %>
+      </td>
+      <td>
+        <%= student.status %>
+      </td>
+      <td>
+        <%= student.score.ads %>
+      </td>
+      <td>
+        <%= student.score.webd %>
+      </td>
+      <td>
+        <%= student.score.react %>
+      </td>
+      <td>
+        Not applied
+      </td>
+      <td>
+        Not applied
+      </td>
+      <td>
+        Not applied
+      </td>
+    </tr>
+    <% } } %>
+  </tbody>
+</table>
+<% for(student of allStudents){ %> <%= student %> <% } %> <% for(student of
+students){ let id = student._id; id = id.toString();
+if(!allStudents.includes(id)){ %> <%= allStudents.indexOf(id) %> <> <% } } %>

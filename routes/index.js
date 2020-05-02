@@ -8,5 +8,6 @@ router.use("/users", require("./users"));
 router.use("/students", require("./students"));
 router.use("/batches", require("./batches"));
 router.use("/interviews", require("./interviews"));
+router.use("/csv", require("./csv"));
 
 module.exports = router;
