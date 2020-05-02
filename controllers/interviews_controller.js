@@ -49,8 +49,13 @@ module.exports.addApplicant = async function (req, res) {
   try {
     let interviewSchedule = await Interview.findById(req.body.interview);
     if (interviewSchedule) {
-      console.log(interviewSchedule.applications);
-      console.log(req.body.student);
+      let applicants = interviewSchedule.applications;
+      for (let i = 0; i < applicants.length; i++) {
+        if (applicants[i].student.equals(req.body.student)) {
+          console.log("student application exists");
+          return res.redirect("back");
+        }
+      }
       interviewSchedule.applications.push({
         student: req.body.student,
       });
