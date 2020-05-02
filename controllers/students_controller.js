@@ -101,3 +101,19 @@ module.exports.updateStudent = async function (req, res) {
     res.redirect("back");
   }
 };
+
+module.exports.deleteStudent = async function (req, res) {
+  try {
+    let student = await Student.findById(req.params.id);
+    if (student) {
+      if (student.score) {
+        await Score.findByIdAndDelete(student.score);
+      }
+    }
+    await Student.findByIdAndDelete(req.params.id);
+    return res.redirect("back");
+  } catch (err) {
+    console.log(err);
+    res.redirect("back");
+  }
+};
