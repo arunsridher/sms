@@ -7,6 +7,10 @@ module.exports.getData = async function (req, res) {
     let interviews = await Interview.find({}).populate({
       path: "applications.student",
       model: "Student",
+      populate: {
+        path: "score",
+        model: "Score",
+      },
     });
     let students = await Student.find({});
     return res.render("csv", {

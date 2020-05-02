@@ -53,13 +53,16 @@ if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
         <%= applicant.student.status %>
       </td>
       <td>
-        <%= applicant.student.score.ads %>
+        <% if(applicant.student.score){ %> <%= applicant.student.score.dsa %>
+        <%} else { %> 0 <% } %>
       </td>
       <td>
-        <%= applicant.student.score.webd %>
+        <% if(applicant.student.score){ %> <%= applicant.student.score.webd %>
+        <%} else { %> 0 <% } %>
       </td>
       <td>
-        <%= applicant.student.score.react %>
+        <% if(applicant.student.score){ %> <%= applicant.student.score.react %>
+        <%} else { %> 0 <% } %>
       </td>
       <td>
         <% let date = interview.date; let monthNames = ['January', 'February',
@@ -76,7 +79,7 @@ if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
       </td>
     </tr>
     <% } }%> <% for(student of students){ let id = student._id; id =
-    id.toString(); if(!allStudents.includes(id)){ %>
+    id.toString(); if(!allStudents.includes(id)){ allStudents.push(id); %>
     <tr>
       <td>
         <%= student._id %>
@@ -91,13 +94,16 @@ if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
         <%= student.status %>
       </td>
       <td>
-        <%= student.score.ads %>
+        <% if(student.score){ %> <%= student.score.dsa %> <%} else { %> 0 <% }
+        %>
       </td>
       <td>
-        <%= student.score.webd %>
+        <% if(student.score){ %> <%= student.score.webd %> <%} else { %> 0 <% }
+        %>
       </td>
       <td>
-        <%= student.score.react %>
+        <% if(student.score){ %> <%= student.score.react %> <%} else { %> 0 <% }
+        %>
       </td>
       <td>
         Not applied
@@ -112,6 +118,3 @@ if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
     <% } } %>
   </tbody>
 </table>
-<% for(student of allStudents){ %> <%= student %> <% } %> <% for(student of
-students){ let id = student._id; id = id.toString();
-if(!allStudents.includes(id)){ %> <%= allStudents.indexOf(id) %> <> <% } } %>
