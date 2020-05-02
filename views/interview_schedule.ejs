@@ -1,4 +1,7 @@
 <div id="interview-schedule-container">
+  <div id="company-name">
+    <%= interview.company %>
+  </div>
   <div id="new-interview-schedule-container">
     <form
       id="create-interview-schedule-form"
@@ -17,5 +20,65 @@
       </select>
       <input type="submit" value="Add Student" />
     </form>
+  </div>
+  <div id="interview-applicants">
+    <table id="interview-applicants-table">
+      <thead>
+        <tr>
+          <th>
+            Student ID
+          </th>
+          <th>
+            Student Name
+          </th>
+          <th>
+            Result
+          </th>
+          <th>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(applicant of interview.applications) { %>
+        <form
+          class="add-form"
+          action="/interviews/updateApplicantStatus"
+          method="POST"
+        >
+          <tr>
+            <td>
+              <%= applicant.student._id%>
+            </td>
+            <td>
+              <%=applicant.student.name%>
+            </td>
+            <td>
+              <input
+                type="hidden"
+                name="interview"
+                value="<%= interview._id %>"
+              />
+              <input
+                type="hidden"
+                name="student"
+                value="<%= applicant.student._id %>"
+              />
+              <select name="result" required>
+                <option value="" disabled selected>Assign Result</option>
+                <option value="PASS">PASS</option>
+                <option value="FAIL">FAIL</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Didn’t Attempt">Didn’t Attempt</option>
+              </select>
+            </td>
+            <td>
+              <input type="submit" value="Update" />
+            </td>
+          </tr>
+        </form>
+        <% } %>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -7,4 +7,8 @@ router.get("/", interviewsController.getInterviews);
 router.post("/create", interviewsController.createInterview);
 router.get("/schedule/:id", interviewsController.scheduleInterview);
 router.post("/addApplicant", interviewsController.addApplicant);
+router.post(
+  "/updateApplicantStatus",
+  interviewsController.updateApplicantStatus
+);
 module.exports = router;

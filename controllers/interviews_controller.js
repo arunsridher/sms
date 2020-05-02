@@ -35,7 +35,6 @@ module.exports.scheduleInterview = async function (req, res) {
       path: "applications.student",
       model: "Student",
     });
-    console.log("interview &&&", interview.applications);
     let students = await Student.find({});
     return res.render("interview_schedule", {
       title: "SMS | Interviews",
@@ -65,6 +64,31 @@ module.exports.addApplicant = async function (req, res) {
       interviewSchedule.save();
     }
     res.redirect("back");
+  } catch (err) {
+    console.log(err);
+    res.redirect("back");
+  }
+};
+
+module.exports.updateApplicantStatus = async function (req, res) {
+  console.log(req.body.interview);
+  console.log(req.body.student);
+  console.log(req.body.result);
+  try {
+    let interviewSchedule = await Interview.findById(req.body.interview);
+    let studentId = req.body.student;
+    if (interviewSchedule) {
+      let applicants = interviewSchedule.applications;
+      for (let i = 0; i < applicants.length; i++) {
+        if (applicants[i].student.equals(studentId)) {
+          console.log("inside student");
+          applicants[i].result = req.body.result;
+          interviewSchedule.save();
+          return res.redirect("back");
+        }
+      }
+    }
+    return res.redirect("back");
   } catch (err) {
     console.log(err);
     res.redirect("back");

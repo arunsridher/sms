@@ -161,3 +161,44 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   justify-content: center;
 }
+
+#company-name {
+  font-size: 2rem;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  border-bottom: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#new-interview-schedule-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#interview-schedule-container {
+  width: 100%;
+}
+
+#interview-applicants {
+  width: 70%;
+  margin: 25px auto;
+}
+
+#interview-applicants-table {
+  width: 100%;
+}
+
+#interview-applicants-table th {
+  text-align: left;
+  padding: 5px 2px;
+  font-size: 1.2rem;
+}
+
+#interview-applicants-table input[type="submit"] {
+  width: 100px;
+  height: 35px;
+}
