@@ -1,0 +1,55 @@
+<div id="interview-container">
+  <div id="new-interview-container">
+    <form
+      id="create-interview-form"
+      class="add-form"
+      action="/interviews/create"
+      method="POST"
+    >
+      <input type="text" name="company" placeholder="Company Name" required />
+      <input type="date" name="date" required />
+      <input type="submit" value="Add Interview" />
+    </form>
+  </div>
+  <div id="interviews-list-container">
+    <ul id="items-list">
+      <% for(interview of interviews) { %>
+      <li>
+        <i class="fas fa-atom"></i> 
+        <span><%= interview.company %></span> 
+        <i class="fas fa-angle-double-right"></i>
+        <%
+          let date = interview.date;
+          let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          let d = date.getDate();
+          let m = monthNames[date.getMonth()];
+          let y = date.getFullYear();
+          let formattedDate = d + " " + m + " " + y;
+        %>
+        <span style="margin-left: 25px;"><%= formattedDate %></span>
+        </</li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+
+<script>
+  getFormattedDate = (date) => {
+    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let d = post.date.getDate();
+    let m = monthNames[post.date.getMonth()];
+    let y = post.date.getFullYear();
+    return d + " " + m + " " + y;
+  }
+</script>
+
+<%
+  getFormattedDate = function(date){
+    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let d = date.getDate();
+    let m = monthNames[date.getMonth()];
+    let y = date.getFullYear();
+    let formattedDate = d + " " + m + " " + y;
+    return formattedDate;
+  }
+%>

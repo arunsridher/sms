@@ -7,5 +7,6 @@ router.get("/", homeController.home);
 router.use("/users", require("./users"));
 router.use("/students", require("./students"));
 router.use("/batches", require("./batches"));
+router.use("/interviews", require("./interviews"));
 
 module.exports = router;

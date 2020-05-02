@@ -47,6 +47,7 @@ input[type="submit"] {
 }
 
 .add-form input[type="text"],
+input[type="date"],
 select {
   padding: 10px;
   width: 250px;
@@ -82,7 +83,7 @@ select {
   margin-left: 25px;
 }
 
-#batches-list {
+#items-list {
   list-style: none;
   margin-top: 25px;
   display: flex;
@@ -92,7 +93,7 @@ select {
   font-family: "Courier New", Courier, monospace;
 }
 
-#batches-list li {
+#items-list li {
   padding: 10px 35px;
 }
 
@@ -153,4 +154,10 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#new-interview-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
