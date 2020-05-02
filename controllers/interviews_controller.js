@@ -31,8 +31,11 @@ module.exports.getInterviews = async function (req, res) {
 
 module.exports.scheduleInterview = async function (req, res) {
   try {
-    let interview = await Interview.findById(req.params.id);
-    console.log(interview);
+    let interview = await Interview.findById(req.params.id).populate({
+      path: "applications.student",
+      model: "Student",
+    });
+    console.log("interview &&&", interview.applications);
     let students = await Student.find({});
     return res.render("interview_schedule", {
       title: "SMS | Interviews",
