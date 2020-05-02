@@ -1,0 +1,34 @@
+#export-csv {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+#export-csv-btn {
+  width: 100px;
+  height: 35px;
+  background-color: #555555;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  margin-right: 5px;
+}
+
+#csv {
+  width: 100%;
+  padding: 5px;
+}
+
+#csv th {
+  text-align: left;
+  padding: 5px;
+  border-radius: 2px;
+  background-color: #b8b8b8;
+}
+
+#csv td {
+  background-color: #cfcfcf;
+  padding: 5px;
+  border-radius: 2px;
+}

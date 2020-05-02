@@ -37,7 +37,7 @@ module.exports.scheduleInterview = async function (req, res) {
     });
     let students = await Student.find({});
     return res.render("interview_schedule", {
-      title: "SMS | Interviews",
+      title: "SMS | Interview",
       interview: interview,
       students: students,
     });

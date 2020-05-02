@@ -1,6 +1,10 @@
+<link rel="stylesheet" href="/css/csv.css" />
 <% let allStudents = []; for(interview of interviews){ for(applicant of
 interview.applications){ let id = applicant.student._id; id = id.toString();
 if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
+<div id="export-csv">
+  <button id="export-csv-btn">Export CSV</button>
+</div>
 <table id="csv">
   <thead>
     <tr>

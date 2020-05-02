@@ -5,8 +5,13 @@
   </div>
   <div id="nav">
     <ul>
-      <% if(locals.user && title != "SMS | Home"){ %>
-      <li><a href="http://localhost:8000">Home</a></li>
+      <% if(locals.user && (title == "SMS | CSV" || title == "SMS | Interviews"
+      || title == "SMS | Batches" || title == "SMS | Students")){ %>
+      <li><a href="http://localhost:8000">Back</a></li>
+      <% } else if(locals.user && (title == "SMS | Edit Student")){ %>
+      <li><a href="http://localhost:8000/students">Back</a></li>
+      <% } else if(locals.user && (title == "SMS | Interview")){ %>
+      <li><a href="http://localhost:8000/interviews">Back</a></li>
       <% } %> <% if(locals.user){ %>
       <li><a href="/users/sign-out">Sign Out</a></li>
       <% }else{ %> <% if(locals.title.includes("SignUp")) { %>
