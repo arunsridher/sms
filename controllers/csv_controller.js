@@ -1,6 +1,8 @@
 const Student = require("../models/student");
 const Interview = require("../models/interview");
 const Batch = require("../models/batch");
+const csvjson = require("csvjson");
+const writeFile = require("fs").writeFile;
 
 module.exports.getData = async function (req, res) {
   try {
@@ -18,6 +20,7 @@ module.exports.getData = async function (req, res) {
     let keys = Object.keys(data[0]);
     // console.log(keys);
     // console.log("data", data);
+
     return res.render("csv", {
       title: "SMS | CSV",
       data: data,
@@ -26,6 +29,32 @@ module.exports.getData = async function (req, res) {
   } catch (err) {
     console.log(err);
     res.redirect("back");
+  }
+};
+
+module.exports.download = async function (req, res) {
+  try {
+    let interviews = await Interview.find({}).populate({
+      path: "applications.student",
+      model: "Student",
+      populate: {
+        path: "score",
+        model: "Score",
+      },
+    });
+    let students = await Student.find({});
+
+    let data = await formatData(interviews, students);
+    let keys = Object.keys(data[0]);
+
+    const csvData = csvjson.toCSV(data, {
+      headers: "key",
+    });
+
+    const file = "./complete-data.csv";
+    return res.download(file);
+  } catch (err) {
+    console.log(err);
   }
 };
 

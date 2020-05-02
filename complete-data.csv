@@ -1,0 +1,6 @@
+studentId,studentName,studentCollege,studentStatus,dsaFinalScore,webdFinalScore,reactFinalScore,interviewDate,interviewCompany,interviewResult
+5ead4808508a014f802fca27,arunsridher,MLR,placed,85,85,85,15 August 2020,amazon,PASS
+5ead4ef238cc5f66885d64fa,Arunsridher Ambati,KITE,placed,90,90,90,15 August 2020,amazon,On Hold
+5ead4808508a014f802fca27,arunsridher,MLR,placed,85,85,85,15 August 2020,microsoft,PASS
+5ead690b4fa4133ab423d786,random guy,random college,not_placed,2030,30,40,15 August 2020,microsoft,On Hold
+5eadaa82be800d4fb4aea82a,new student,new college,,null,null,null,null,null,null
