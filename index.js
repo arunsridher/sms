@@ -1,10 +1,10 @@
 //include express
 const express = require("express");
 const env = require("./config/environment");
+const ejsLint = require("ejs-lint");
 const expressLayouts = require("express-ejs-layouts");
 //port on which the server should listen
 const port = env.port;
-
 //include database
 const db = require("./config/mongoose");
 

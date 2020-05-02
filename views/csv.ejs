@@ -1,11 +1,26 @@
 <link rel="stylesheet" href="/css/csv.css" />
-<% let allStudents = []; for(interview of interviews){ for(applicant of
-interview.applications){ let id = applicant.student._id; id = id.toString();
-if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
 <div id="export-csv">
   <button id="export-csv-btn">Export CSV</button>
 </div>
 <table id="csv">
+  <thead>
+    <tr>
+      <% for(key of keys) { %>
+      <th><%= key %></th>
+      <% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(item of data){ %>
+    <tr>
+      <% for(key of keys) { %>
+      <td><%=item[key]%></td>
+      <% } %>
+    </tr>
+    <% }%>
+  </tbody>
+</table>
+<!-- <table id="csv">
   <thead>
     <tr>
       <th>
@@ -41,84 +56,39 @@ if(!allStudents.includes(id)){ allStudents.push(id); } } } %>
     </tr>
   </thead>
   <tbody>
-    <% for(interview of interviews){ %> <% for(applicant of
-    interview.applications){ %>
+    <% for(item of data){ %>
     <tr>
       <td>
-        <%= applicant.student._id %>
+        <%= item.studentId %>
       </td>
       <td>
-        <%= applicant.student.name %>
+        <%= item.studentName %>
       </td>
       <td>
-        <%= applicant.student.college %>
+        <%= item.studentCollege %>
       </td>
       <td>
-        <%= applicant.student.status %>
+        <%= item.studentStatus %>
       </td>
       <td>
-        <% if(applicant.student.score){ %> <%= applicant.student.score.dsa %>
-        <%} else { %> 0 <% } %>
+        <%= item.dsaFinalScore %>
       </td>
       <td>
-        <% if(applicant.student.score){ %> <%= applicant.student.score.webd %>
-        <%} else { %> 0 <% } %>
+        <%= item.webdFinalScore %>
       </td>
       <td>
-        <% if(applicant.student.score){ %> <%= applicant.student.score.react %>
-        <%} else { %> 0 <% } %>
+        <%= item.reactFinalScore %>
       </td>
       <td>
-        <% let date = interview.date; let monthNames = ['January', 'February',
-        'March', 'April', 'May', 'June', 'July', 'August', 'September',
-        'October', 'November', 'December']; let d = date.getDate(); let m =
-        monthNames[date.getMonth()]; let y = date.getFullYear(); let
-        formattedDate = d + " " + m + " " + y; %> <%= formattedDate %>
+        <%= item.interviewDate %>
       </td>
       <td>
-        <%= interview.company %>
+        <%= item.interviewCompany %>
       </td>
       <td>
-        <%= applicant.result %>
+        <%= item.interviewResult %>
       </td>
     </tr>
-    <% } }%> <% for(student of students){ let id = student._id; id =
-    id.toString(); if(!allStudents.includes(id)){ allStudents.push(id); %>
-    <tr>
-      <td>
-        <%= student._id %>
-      </td>
-      <td>
-        <%= student.name %>
-      </td>
-      <td>
-        <%= student.college %>
-      </td>
-      <td>
-        <%= student.status %>
-      </td>
-      <td>
-        <% if(student.score){ %> <%= student.score.dsa %> <%} else { %> 0 <% }
-        %>
-      </td>
-      <td>
-        <% if(student.score){ %> <%= student.score.webd %> <%} else { %> 0 <% }
-        %>
-      </td>
-      <td>
-        <% if(student.score){ %> <%= student.score.react %> <%} else { %> 0 <% }
-        %>
-      </td>
-      <td>
-        Not applied
-      </td>
-      <td>
-        Not applied
-      </td>
-      <td>
-        Not applied
-      </td>
-    </tr>
-    <% } } %>
+    <% }%>
   </tbody>
-</table>
+</table> -->
