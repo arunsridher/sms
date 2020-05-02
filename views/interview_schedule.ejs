@@ -65,11 +65,13 @@
                 value="<%= applicant.student._id %>"
               />
               <select name="result" required>
+                <% if(!applicant.result){ %>
                 <option value="" disabled selected>Assign Result</option>
-                <option value="PASS">PASS</option>
-                <option value="FAIL">FAIL</option>
-                <option value="On Hold">On Hold</option>
-                <option value="Didn’t Attempt">Didn’t Attempt</option>
+                <% } %>
+                <option value="PASS" <% if (applicant.result == 'PASS') { %>selected<% } %>>PASS</option>
+                <option value="FAIL" <% if (applicant.result == 'FAIL') { %>selected<% } %>>FAIL</option>
+                <option value="On Hold" <% if (applicant.result == 'On Hold') { %>selected<% } %>>On Hold</option>
+                <option value="Didn’t Attempt" <% if (applicant.result == 'Didn’t Attempt') { %>selected<% } %>>Didn’t Attempt</option>
               </select>
             </td>
             <td>
