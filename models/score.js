@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 
 const scoreSchema = new mongoose.Schema(
   {
-    student: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
     dsa: {
       type: Number,
       required: true,

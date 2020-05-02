@@ -1,0 +1,20 @@
+<div id="batches-container">
+  <div id="new-batch-container">
+    <form
+      id="create-batch-form"
+      class="add-form"
+      action="/batches/create"
+      method="POST"
+    >
+      <input type="text" name="name" placeholder="Batch Name" required />
+      <input type="submit" value="Add Batch" />
+    </form>
+  </div>
+  <div id="batches-list-container">
+    <ul id="batches-list">
+      <% for(batch of batches) { %>
+      <li><i class="fas fa-atom"></i> <%= batch.name %></li>
+      <% } %>
+    </ul>
+  </div>
+</div>

@@ -6,6 +6,12 @@ const batchSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    // students: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Student",
+    //   },
+    // ],
     // other fields like duration, courses, course content, timings, etc
   },
   {

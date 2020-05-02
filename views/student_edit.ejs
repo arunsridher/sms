@@ -1,0 +1,111 @@
+<form
+  id="student-edit-form"
+  class="form-style"
+  action="/students/update"
+  method="POST"
+>
+  <table>
+    <tbody>
+      <tr>
+        <!-- <td>
+          <label class="student-label" for="id">Id</label>
+        </td> -->
+        <td>
+          <input
+            type="hidden"
+            id="id"
+            name="id"
+            value="<%= student._id %>"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="name">Name</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="<%= student.name %>"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="college">College</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            id="college"
+            name="college"
+            value="<%= student.college %>"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="batch">Batch</label>
+        </td>
+        <td>
+          <select id="batch" name="batch" required>
+            <option value="" disabled selected>Batch</option>
+            <% for(batch of batches){ %>
+            <option value="<%= batch._id %>" ><%=batch.name%></option>
+            <% } %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="status">Status</label>
+        </td>
+        <td>
+          <select id="status" name="status" required>
+            <option value="" disabled selected>Status</option>
+            <option value="placed" <% if
+            (student.status == 'placed') { %>selected<% } %> >Placed</option>
+            <option value="not_placed" <% if
+            (student.status == 'placed') { %>selected<% } %> >Not Placed</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="dsa">DSA</label>
+        </td>
+        <td>
+          <% if(student.score) { %> <input type="number" id="dsa" name="dsa" value="<%= student.score.dsa %>" required> <% } else { %>
+            <input type="number" id="dsa" name="dsa" required> <% } %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="webd">WebD</label>
+        </td>
+        <td>
+          <% if(student.score) { %> <input type="number" id="webd" name="webd" value="<%= student.score.webd %>" required> <% } else { %>
+            <input type="number" id="webd" name="webd" required> <% } %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="student-label" for="react">React</label>
+        </td>
+        <td>
+          <% if(student.score) { %> <input type="number" id="react" name="react" value="<%= student.score.react %>" required> <% } else { %>
+            <input type="number" id="react" name="react" required> <% } %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding-top:25px;">
+          <input type="submit" value="Update" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

@@ -38,3 +38,119 @@ input[type="submit"] {
   font-size: 1rem;
   margin-top: 5px;
 }
+
+.add-form {
+}
+
+.add-form input {
+  margin: 0 5px;
+}
+
+.add-form input[type="text"],
+select {
+  padding: 10px;
+  width: 250px;
+  margin: 3px 5px;
+  color: #2c2d30; /* #656565; */
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.1rem;
+  background-color: #fafafa;
+  border: 0px;
+  border-radius: 2px;
+}
+
+.inline-select {
+  width: 150px;
+}
+
+.inline-text {
+  width: 75px;
+  padding: 10px;
+}
+
+.add-form input[type="submit"] {
+  width: 125px;
+  height: 35px;
+  border: 0px;
+  border-radius: 2px;
+  background-color: #0a010b;
+  color: #fafafa;
+  font-size: 1rem;
+  margin-left: 25px;
+}
+
+#batches-list {
+  list-style: none;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#batches-list li {
+  padding: 10px 35px;
+}
+
+.edit-user {
+  color: blue;
+  padding: 5px;
+}
+
+.delete-user {
+  color: red;
+  padding: 5px;
+}
+
+#student-edit-form {
+  width: 40%;
+  min-width: 600px;
+  margin: 0 auto;
+}
+
+#student-edit-form table {
+  width: 100%;
+}
+
+#student-edit-form select {
+  display: block;
+  padding: 10px;
+  width: 350px;
+  margin: 3px auto;
+  color: #2c2d30; /* #656565; */
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.1rem;
+  background-color: #fafafa;
+  border: 0px;
+  border-radius: 2px;
+}
+
+#student-edit-form td {
+  width: 50%;
+  text-align: left;
+}
+
+.student-label {
+  display: block;
+  font-size: 1.2rem;
+  font-family: "Courier New", Courier, monospace;
+  color: #000;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

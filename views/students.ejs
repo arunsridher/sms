@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="/css/student.css" />
+<div id="student-container">
+  <div id="new-student-container">
+    <form
+      id="create-student-form"
+      class="add-form"
+      action="/students/create"
+      method="POST"
+    >
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="text" name="college" placeholder="College" required />
+      <select name="batch" required>
+        <option value="" disabled selected>Batch</option>
+        <% for(batch of batches){ %>
+        <option value="<%= batch._id %>"><%= batch.name %></option>
+        <% } %>
+      </select>
+      <input type="submit" value="Add Student" />
+    </form>
+  </div>
+  <div id="students-list-container">
+    <table id="students-table">
+      <thead>
+        <tr>
+          <th>
+            Id
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            College
+          </th>
+          <th>
+            Batch
+          </th>
+          <th>
+            Status
+          </th>
+          <th colspan="3">
+            <table style="width: 100%;">
+              <tr>
+                <th colspan="3" style="text-align: center;">Scores</th>
+              </tr>
+              <tr>
+                <th style="width: 70px;">DSA</th>
+                <th style="width: 70px;">WebD</th>
+                <th style="width: 70px;">React</th>
+              </tr>
+            </table>
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(student of students) { %>
+        <tr>
+          <td>
+            <%= student._id %>
+          </td>
+          <td>
+            <%= student.name %>
+          </td>
+          <td>
+            <%= student.college %>
+          </td>
+          <td>
+            <%= student.batch.name %>
+          </td>
+          <td>
+            <% if(student.status) { %> <%= student.status %> <% } else { %>
+            ----- <% } %>
+          </td>
+          <td>
+            <% if(student.score) { %> <%= student.score.dsa %> <% } else { %>
+            ----- <% } %>
+          </td>
+          <td>
+            <% if(student.score) { %> <%= student.score.webd %> <% } else { %>
+            ----- <% } %>
+          </td>
+          <td>
+            <% if(student.score) { %> <%= student.score.react %> <% } else { %>
+            ----- <% } %>
+          </td>
+          <td>
+            <a class="edit-user" href="/students/edit/<%=student._id%>"
+              ><i class="fas fa-user-edit"></i
+            ></a>
+            <a class="delete-user" href="/students/edit/<%=student._id%>"
+              ><i class="fas fa-user-minus"></i
+            ></a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

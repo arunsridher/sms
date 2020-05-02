@@ -14,6 +14,14 @@ const studentSchema = new mongoose.Schema(
       type: String,
       enum: ["placed", "not_placed"],
     },
+    batch: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Batch",
+    },
+    score: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Score",
+    },
   },
   {
     timestamps: true,

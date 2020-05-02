@@ -1,0 +1,34 @@
+#student-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#new-student-container {
+  margin: 15px auto 25px;
+  width: 70%;
+}
+
+#create-student-form {
+  width: 100%;
+}
+
+#students-table {
+  width: 100%;
+  margin: 0 auto;
+}
+thead {
+  background-color: #b8b8b8;
+}
+th,
+td {
+  text-align: left;
+  padding: 5px;
+  font-size: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border-radius: 5px;
+  margin: 2px;
+}
+td {
+  background-color: #cfcfcf;
+  /* width: 25%; */
+}

@@ -5,7 +5,9 @@
   </div>
   <div id="nav">
     <ul>
-      <% if(locals.user){ %>
+      <% if(locals.user && title != "SMS | Home"){ %>
+      <li><a href="http://localhost:8000">Back</a></li>
+      <% } %> <% if(locals.user){ %>
       <li><a href="/users/sign-out">Sign Out</a></li>
       <% }else{ %> <% if(locals.title.includes("SignUp")) { %>
       <li><a href="/users/sign-in">Sign In</a></li>
