@@ -10,18 +10,18 @@ const interviewSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    // applications: [
-    //   {
-    //     student: {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Student",
-    //     },
-    //     result: {
-    //       type: String,
-    //       enum: ["PASS", "FAIL", "On Hold", "Didn’t Attempt"],
-    //     },
-    //   },
-    // ],
+    applications: [
+      {
+        student: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Student",
+        },
+        result: {
+          type: String,
+          enum: ["PASS", "FAIL", "On Hold", "Didn’t Attempt"],
+        },
+      },
+    ],
   },
   {
     timestamps: true,

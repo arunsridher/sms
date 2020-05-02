@@ -14,6 +14,7 @@
   <div id="interviews-list-container">
     <ul id="items-list">
       <% for(interview of interviews) { %>
+        <a href="/interviews/schedule/<%=interview._id%>">
       <li>
         <i class="fas fa-atom"></i> 
         <span><%= interview.company %></span> 
@@ -28,6 +29,7 @@
         %>
         <span style="margin-left: 25px;"><%= formattedDate %></span>
         </</li>
+      </a>
       <% } %>
     </ul>
   </div>

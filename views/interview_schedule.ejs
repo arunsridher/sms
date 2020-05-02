@@ -1,0 +1,21 @@
+<div id="interview-schedule-container">
+  <div id="new-interview-schedule-container">
+    <form
+      id="create-interview-schedule-form"
+      class="add-form"
+      action="/interviews/addApplicant"
+      method="POST"
+    >
+      <input type="hidden" name="interview" value="<%= interview._id %>" />
+      <select name="student" required>
+        <option value="" disabled selected>Select Student</option>
+        <% for(student of students){ %>
+        <option value="<%=student._id%>" title="<%=student.name%>"
+          ><%=student._id%></option
+        >
+        <% } %>
+      </select>
+      <input type="submit" value="Add Student" />
+    </form>
+  </div>
+</div>
