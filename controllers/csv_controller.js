@@ -1,11 +1,15 @@
+//include all models
 const Student = require("../models/student");
 const Interview = require("../models/interview");
 const Batch = require("../models/batch");
-const csvjson = require("csvjson");
-const writeFile = require("fs").writeFile;
 
+//include csvjson library
+const csvjson = require("csvjson");
+
+//get complete student and interview data
 module.exports.getData = async function (req, res) {
   try {
+    //fetch all interviews with students and scores
     let interviews = await Interview.find({}).populate({
       path: "applications.student",
       model: "Student",
@@ -16,11 +20,11 @@ module.exports.getData = async function (req, res) {
     });
     let students = await Student.find({});
 
+    //convert all the data to json array
     let data = await formatData(interviews, students);
     let keys = Object.keys(data[0]);
-    // console.log(keys);
-    // console.log("data", data);
 
+    //return response
     return res.render("csv", {
       title: "SMS | CSV",
       data: data,
@@ -32,8 +36,10 @@ module.exports.getData = async function (req, res) {
   }
 };
 
+//download data as csv
 module.exports.download = async function (req, res) {
   try {
+    //fetch all data
     let interviews = await Interview.find({}).populate({
       path: "applications.student",
       model: "Student",
@@ -44,13 +50,16 @@ module.exports.download = async function (req, res) {
     });
     let students = await Student.find({});
 
+    //convert to json
     let data = await formatData(interviews, students);
     let keys = Object.keys(data[0]);
 
+    //csv options
     const csvData = csvjson.toCSV(data, {
       headers: "key",
     });
 
+    //return response as converted csv file
     const file = "./complete-data.csv";
     return res.download(file);
   } catch (err) {
@@ -58,6 +67,7 @@ module.exports.download = async function (req, res) {
   }
 };
 
+//helper method to convert search results to json object array
 async function formatData(interviews, students) {
   let data = [];
   let totalStudents = [];
@@ -110,6 +120,7 @@ async function formatData(interviews, students) {
   return data;
 }
 
+//helper method to extract date from mongoose date
 function getFormattedDate(date) {
   let monthNames = [
     "January",

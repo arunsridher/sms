@@ -1,7 +1,9 @@
+//include relevant models
 const Student = require("../models/student");
 const Batch = require("../models/batch");
 const Score = require("../models/score");
 
+//create a new student
 module.exports.createStudent = async function (req, res) {
   try {
     let student = await Student.create({
@@ -10,6 +12,7 @@ module.exports.createStudent = async function (req, res) {
       batch: req.body.batch,
     });
 
+    //return all students data as response with the newly created student
     let students = await Student.find({})
       .sort("-createdAt")
       .populate("batch")
@@ -26,6 +29,7 @@ module.exports.createStudent = async function (req, res) {
   }
 };
 
+//get a list of all students
 module.exports.getStudents = async function (req, res) {
   try {
     let students = await Student.find({})
@@ -45,6 +49,7 @@ module.exports.getStudents = async function (req, res) {
   }
 };
 
+//edit student request
 module.exports.editStudent = async function (req, res) {
   try {
     let student = await Student.findById(req.params.id)
@@ -62,6 +67,7 @@ module.exports.editStudent = async function (req, res) {
   }
 };
 
+//update student details
 module.exports.updateStudent = async function (req, res) {
   try {
     console.log(req.body);

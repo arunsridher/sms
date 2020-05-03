@@ -11,4 +11,5 @@ router.post(
   "/updateApplicantStatus",
   interviewsController.updateApplicantStatus
 );
+
 module.exports = router;

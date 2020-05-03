@@ -1,3 +1,4 @@
+//include passport and passport local library
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/user");
@@ -32,10 +33,12 @@ passport.use(
   )
 );
 
+//serialize user
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
+//deserialize user
 passport.deserializeUser(function (id, done) {
   User.findById(id, function (err, user) {
     if (err) {
@@ -46,6 +49,7 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
+//check if user is authenticated
 passport.checkAuthentication = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -55,6 +59,7 @@ passport.checkAuthentication = function (req, res, next) {
   return res.redirect("/users/sign-in");
 };
 
+//set authenticated user in response locals object
 passport.setAuthenticatedUser = function (req, res, next) {
   if (req.isAuthenticated()) {
     res.locals.user = req.user;

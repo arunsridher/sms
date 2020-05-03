@@ -1,7 +1,9 @@
+//include necessary models
 const Student = require("../models/student");
 const Interview = require("../models/interview");
 // const InterviewSchedule = require("../models/interviewSchedule");
 
+//create a new interview
 module.exports.createInterview = async function (req, res) {
   try {
     let interview = await Interview.create({
@@ -16,6 +18,7 @@ module.exports.createInterview = async function (req, res) {
   }
 };
 
+//get a list of all interviews
 module.exports.getInterviews = async function (req, res) {
   try {
     let interviews = await Interview.find({}).sort("-createdAt");
@@ -29,6 +32,7 @@ module.exports.getInterviews = async function (req, res) {
   }
 };
 
+//get the interview schedule of an interview with all students/applicants
 module.exports.scheduleInterview = async function (req, res) {
   try {
     let interview = await Interview.findById(req.params.id).populate({
@@ -47,6 +51,7 @@ module.exports.scheduleInterview = async function (req, res) {
   }
 };
 
+//add a student to an interview schedule
 module.exports.addApplicant = async function (req, res) {
   try {
     let interviewSchedule = await Interview.findById(req.body.interview);
@@ -70,6 +75,7 @@ module.exports.addApplicant = async function (req, res) {
   }
 };
 
+//update student result
 module.exports.updateApplicantStatus = async function (req, res) {
   console.log(req.body.interview);
   console.log(req.body.student);
