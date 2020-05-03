@@ -53,9 +53,15 @@
         </td>
         <td>
           <select id="batch" name="batch" required>
-            <option value="" disabled selected>Batch</option>
             <% for(batch of batches){ %>
-            <option value="<%= batch._id %>" ><%=batch.name%></option>
+              <% 
+                let studBatch = student.batch._id;
+                studBatch = studBatch.toString();
+                let batchId = batch._id;
+                batchId = batchId.toString();
+                let batchSelected = (studBatch == batchId)? 'selected' : '' 
+              %>
+            <option value="<%= batch._id %>" <%= batchSelected %> ><%=batch.name%></option>
             <% } %>
           </select>
         </td>

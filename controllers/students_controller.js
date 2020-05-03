@@ -2,6 +2,7 @@
 const Student = require("../models/student");
 const Batch = require("../models/batch");
 const Score = require("../models/score");
+const Interview = require("../models/interview");
 
 //create a new student
 module.exports.createStudent = async function (req, res) {
@@ -111,6 +112,14 @@ module.exports.updateStudent = async function (req, res) {
 module.exports.deleteStudent = async function (req, res) {
   try {
     let student = await Student.findById(req.params.id);
+    let interviews = await Interview.find({});
+    for (let i = 0; i < interviews.length; i++) {
+      let applicants = interviews[i].applications;
+      const filteredApplicants = applicants.filter(
+        (item) => item.student._id !== req.params.id
+      );
+      interviews[i].applications = filteredApplicants;
+    }
     if (student) {
       if (student.score) {
         await Score.findByIdAndDelete(student.score);

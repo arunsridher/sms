@@ -72,7 +72,9 @@ async function formatData(interviews, students) {
   let data = [];
   let totalStudents = [];
   for (interview of interviews) {
+    // console.log(interview);
     for (applicant of interview.applications) {
+      // console.log(applicant);
       let obj = {};
       let id = applicant.student._id;
       id = id.toString();
