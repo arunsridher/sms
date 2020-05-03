@@ -2,6 +2,7 @@
 const Student = require("../models/student");
 const Interview = require("../models/interview");
 const Batch = require("../models/batch");
+const writeFile = require("fs").writeFile;
 
 //include csvjson library
 const csvjson = require("csvjson");
@@ -59,9 +60,16 @@ module.exports.download = async function (req, res) {
       headers: "key",
     });
 
-    //return response as converted csv file
     const file = "./complete-data.csv";
-    return res.download(file);
+    writeFile(file, csvData, (err) => {
+      if (err) {
+        console.log(err); // Do something to handle the error or just throw it
+        throw new Error(err);
+      }
+      console.log("Success!");
+      //return response as converted csv file
+      return res.download(file);
+    });
   } catch (err) {
     console.log(err);
   }
